@@ -29,15 +29,20 @@ textarea::-webkit-scrollbar-thumb {
 	margin: auto;
 }
 
-#container #title{
+#container > div:first-child{
 	position: relative;
 	height: 5%;
+	
+}
+
+#container > div > #title{
+	position: absolute;
+	bottom: 10px;
 	color: #eee;
 }
 
-#container #title span{
-	position: absolute;
-	bottom: 10px;
+#container #title > span{
+	color: #444;
 }
 
 .grid{
@@ -59,12 +64,7 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .day > span{
-	font-size: 20pt;
-	color: #444;
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	z-index: 500;
+	color: #555;
 }
 
 .padded{
@@ -80,16 +80,16 @@ textarea{
 	color: #eee;
 	max-height: 200px;
 	padding-top; 20px;
+	outline-color: #fff;
 }
 
 #dropzone{
 	height: 100%;
 	width: 100%;
 	position: absolute;
-	top:0;
+	top: 0;
 	z-index: 1000;
 	background: rgba(20,20,20,0.3);
-	
 }
 
 #drop {
@@ -103,5 +103,4 @@ textarea{
 	text-align: center;
 	padding-top: calc(100px - 16px / 2);
 	font-weight: 400;
-
 }

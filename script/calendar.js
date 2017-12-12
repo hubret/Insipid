@@ -1,10 +1,5 @@
 function Calendar(date) {
 	
-	//constants
-	const cal_days_labels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-	const cal_months_labels = ['January', 'February', 'March', 'April',
-				 'May', 'June', 'July', 'August', 'September',
-				 'October', 'November', 'December'];
 	const cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	
 	this.month = date.getMonth();
@@ -47,7 +42,7 @@ function Calendar(date) {
 					var ta = document.createElement('textarea');
 					var n = document.createElement('span');
 					var nt = document.createTextNode(dn);
-					console.log('hello');
+					ta.id = "d" + dn;
 					n.appendChild(nt);
 					day.appendChild(ta);
 					day.appendChild(n);

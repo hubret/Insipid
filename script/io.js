@@ -18,11 +18,14 @@ function handleFileSelect(evt) {
 
 	reader.onload = function(progressEvent){		
 		
-		console.log(this.result);
+		var lines = this.result.split('\n');
+		var raw = [];
 		
-		//load json into the global variable that
-		//stores all of the current calendar's data
-		current = JSON.parse(this.result);
+		for(var line = 0; line < lines.length; line++){
+			raw.push(lines[line]);
+		}
+		console.log(raw);
+		createMemos(raw);
 		
 		//remove prompt
 		if(startup){

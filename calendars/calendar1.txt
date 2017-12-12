@@ -1,10 +1,9 @@
-{"entries":[
-	{
-	"text": "- i have to do something today",
-	"date": 1513022164106
-	},
-	{
-	"text": "- i have to do something else",
-	"date": 1513122164106
-	}
-]}
+date: 1513052147722
+memo:
+- i have to do something today
+- i have to do something today
+
+
+date: 1512104400000
+memo:
+- i have to do something else
