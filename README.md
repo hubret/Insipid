@@ -1,5 +1,5 @@
 # Insipid-wip
-a simple calendar that reads json files
+a simple calendar that reads plaintext files
 
 ## Goals
 - runs in browser in a local setting
@@ -8,5 +8,5 @@ a simple calendar that reads json files
 - ability to export files for reuse
 
 ## Todo
-- concatenate multiple json imports into a single variable somehow
+- concatenate multiple plaintext imports into a single variable somehow
 - implement json exporting via plaintext copy/paste or with a file download
