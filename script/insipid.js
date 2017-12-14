@@ -62,7 +62,7 @@ function merge(cal){
 
 //autosave textarea entries to calendar variable.
 function autosave(){
-	for(var d = 0; d < cal_days_in_month[currentDate.getMonth()]; d++){
+	for(var d = 0; d < cal_days_in_month[workingDate.getMonth()]; d++){
 		
 		if(document.getElementById("d" + (d+1)).value){
 			
