@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2
+- Fixed a bug
+	- erasing a memo would not delete it from memory
+	
 ## 1.0.1
 - Fixed a bug
 	- autosave would not run when the working month was not the same as the current month
