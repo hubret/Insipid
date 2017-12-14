@@ -35,7 +35,7 @@ function Month(){
 	}
 	
 	this.removeDay = function(day){
-		this.day[day] = undefined;
+		this.day.splice(day, 1);
 	}
 	
 	this.removeAll = function(){

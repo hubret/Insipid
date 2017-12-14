@@ -64,16 +64,15 @@ function merge(cal){
 function autosave(){
 	for(var d = 0; d < cal_days_in_month[workingDate.getMonth()]; d++){
 		
-		if(document.getElementById("d" + (d+1)).value){
-			
+		/*if(document.getElementById("d" + (d+1)).value != ''){*/
+		
+		try{
 			var value = document.getElementById("d" + (d+1)).value;
+			var y = workingDate.getFullYear();
+			var m = workingDate.getMonth();
 
 			//only save boxes with more than nothing
 			if(value != ""){
-
-				var y = workingDate.getFullYear();
-				var m = workingDate.getMonth();
-
 				if(calendar.year[y]){
 					if(calendar.year[y].month[m]){
 						if(calendar.year[y].month[m].day[d]){
@@ -90,8 +89,17 @@ function autosave(){
 					calendar.year[y].addMonth(m);
 					calendar.year[y].month[m].addDay(d, value);
 				}
+			}else{
+				calendar.year[y].month[m].removeDay(d);
 			}
+		}catch(err){
+			
 		}
+		
+		
+		/*}else{
+			calendar.year[workingDate.getFullYear()].month[workingDate.getMonth()].day.splice(d,1);
+		}*/
 	}
 	//also update the exporter
 	document.getElementById('exporter').value = objectToPT(calendar);
