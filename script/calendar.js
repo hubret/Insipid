@@ -1,68 +1,48 @@
-function Calendar(date) {
+function Calendar(name){
+	this.name = name;
+	this.year = [];
 	
-	const cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	
-	this.month = date.getMonth();
-	this.year = date.getFullYear();
-	
-	var startingDay = new Date(this.year, this.month, 1).getDay();
-	var monthLength = cal_days_in_month[this.month];
-
-	if (this.month == 1) { // February only!
-		if ((this.year % 4 == 0 && this.year % 100 != 0) || this.year % 400 == 0){
-			monthLength = 29;
-		}
+	this.addYear = function (year){
+		this.year[year] = new Year();
 	}
-
-	this.drawGrid = function(){
-
-		console.log(this.month);
-		
-		var grid = document.createElement('div');
-		grid.className = 'grid';
-
-		// fill in the days
-		var dn = 1;
-		// this loop is for is weeks (rows)
-		for (var i = 0; i < 6; i++) {
-			
-			
-
-			var row = document.createElement('div');
-			row.className = 'row';
-
-			// this loop is for weekdays (cells)
-			for (var j = 0; j < 7; j++) { 
-				
-				var day = document.createElement('div');
-				day.className = 'day';
-				
-				//fill in day numbers
-				if (dn <= monthLength && (i > 0 || j >= startingDay)) {
-					var ta = document.createElement('textarea');
-					var n = document.createElement('span');
-					var nt = document.createTextNode(dn);
-					ta.id = "d" + dn;
-					n.appendChild(nt);
-					day.appendChild(ta);
-					day.appendChild(n);
-					dn++;
-				}else{
-					day.className += ' padded';
-				}
-				row.appendChild(day);
-			}
-			grid.appendChild(row);
-
-			// stop making rows if we've run out of days
-			if (day > monthLength) {
-				break;
-			}
-
-		}
-
-
-		document.getElementById('container').appendChild(grid);
-
+	
+	this.removeYear = function(year){
+		this.year[year] = undefined;
 	}
+}
+
+function Year(){
+	this.month = [];
+	
+	this.addMonth = function(month){
+		this.month[month] = new Month();
+	}
+	
+	this.removeMonth = function(month){
+		this.month[month] = undefined;
+	}
+	
+	this.removeAll = function(){
+		this.month = [];
+	}
+}
+
+function Month(){
+	this.day = [];
+	
+	this.addDay = function(day, memo){
+		this.day[day] = new Day(memo);
+	}
+	
+	this.removeDay = function(day){
+		this.day[day] = undefined;
+	}
+	
+	this.removeAll = function(){
+		this.day = [];
+	}
+}
+
+function Day(memo){
+	this.memo = memo;
 }

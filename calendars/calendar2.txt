@@ -1,6 +1,14 @@
-{"entries":[
-	{
-	"text": "- i have to do something today",
-	"date": 1513922164106
-	}
-]}
+year: 2017
+
+month: 11
+
+day: 14
+
+memo:
+- i have something to do today
+- i have 2 things to do today
+
+day: 15
+
+memo:
+- i have to do a lot of stuff

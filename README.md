@@ -1,12 +1,22 @@
-# Insipid-wip
+# Insipid
 a simple calendar that reads plaintext files
 
-## Goals
+## Features
 - runs in browser in a local setting
-- ability to chain imports of multiple files to separate contexts (work-calendar.json, school-calendar.txt)
-- ability to edit files by writing memos for each date with the html interface
-- ability to export files for reuse
+- import multiple files via drag-and-drop and via plaintext paste
+- export calendar to plaintext
+- use arrowkeys to navigate calendar
+- click on the current working month at the top to go back to today's date
 
-## Todo
-- concatenate multiple plaintext imports into a single variable somehow
-- implement json exporting via plaintext copy/paste or with a file download
+## How to write an Insipid file
+- make a .txt file
+- the format looks like this:
+
+year: 2017
+month: 11
+day: 13
+memo: - i have to do something today
+			
+- year, month, and day should be one-liners
+- memo can be written on multiple lines
+- drag finished files into Insipid to throw them up on the calendar

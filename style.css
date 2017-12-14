@@ -1,3 +1,5 @@
+
+/* GLOBALS */
 *{
 	box-sizing: border-box;
 }
@@ -14,14 +16,16 @@ textarea::-webkit-scrollbar {
 	width: 0.5em;
 }
 
-textarea::-webkit-scrollbar-track {
-	
-}
-
 textarea::-webkit-scrollbar-thumb {
 	background-color: #222;
 	outline: 1px solid slategrey;
 }
+
+a{
+	cursor: pointer;
+}
+
+/* BLOCKS */
 
 #container{
 	width: 120vh;
@@ -29,23 +33,62 @@ textarea::-webkit-scrollbar-thumb {
 	margin: auto;
 }
 
+/* IMPORT AND EXPORT PANELS */
+
+#import, #export{
+	position: absolute;
+	transition: all 0.5s ease-in-out;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+}
+
+#import > div, #export > div{
+	position: absolute;
+	background: #282828;
+	color: #eee;
+	width: 25%;
+	height: 25%;
+	min-width: 400px;
+	min-height: 200px;
+	top: 50vh;
+	left: 50vw;
+	transform: translate(-50%, -50%);
+}
+
+#import textarea, #export textarea{
+	border: 0;
+	background: transparent;
+	width: 100%;
+	height: 100%;
+	resize: none;
+	color: #eee;
+	padding-top; 20px;
+	outline-color: transparent;
+}
+
+/* HEADER */
+
 #container > div:first-child{
 	position: relative;
 	height: 5%;
 	
 }
 
-#container > div > #title{
+#status{
 	position: absolute;
 	bottom: 10px;
 	color: #eee;
 }
 
-#container #title > span{
-	color: #444;
+#title{
+	color: #ff9900;
 }
 
-.grid{
+/* GRID */
+
+#grid{
 	display: table;
 	width: 100%;
 	height: 95%;
@@ -64,6 +107,10 @@ textarea::-webkit-scrollbar-thumb {
 }
 
 .day > span{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 100;
 	color: #555;
 }
 
@@ -71,9 +118,17 @@ textarea::-webkit-scrollbar-thumb {
 	background: #282828;
 }
 
-textarea{
+.today{
+	background: #444;
+}
+
+.today > span{
+	color: #222;
+}
+
+.day textarea{
 	border: 0;
-	background: #333;
+	background: transparent;
 	width: 100%;
 	height: 100%;
 	resize: none;
@@ -81,26 +136,4 @@ textarea{
 	max-height: 200px;
 	padding-top; 20px;
 	outline-color: #fff;
-}
-
-#dropzone{
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	top: 0;
-	z-index: 1000;
-	background: rgba(20,20,20,0.3);
-}
-
-#drop {
-	position: relative;
-	width: 400px;
-	height: 200px;
-	top: calc(50% - 100px);
-	margin: auto;
-	background-color: #333;
-	color: #eee;
-	text-align: center;
-	padding-top: calc(100px - 16px / 2);
-	font-weight: 400;
 }

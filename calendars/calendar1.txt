@@ -1,9 +1,10 @@
-date: 1513052147722
+year: 2017
+month: 11
+day: 14
 memo:
-- i have to do something today
-- i have to do something today
+- i have something to do today
+- i have 2 things to do today
+day: 15
 
-
-date: 1512104400000
 memo:
-- i have to do something else
+- i have to do a lot of stuff
