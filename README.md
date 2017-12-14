@@ -12,10 +12,10 @@ a simple calendar that reads plaintext files
 - make a .txt file
 - the format looks like this:
 
-year: 2017
-month: 11
-day: 13
-memo: - i have to do something today
+year: 2017  
+month: 11  
+day: 13  
+memo: i have to do something today
 			
 - year, month, and day should be one-liners
 - memo can be written on multiple lines
