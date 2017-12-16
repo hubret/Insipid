@@ -20,21 +20,27 @@ var exportBox = document.getElementById("export");
 function updateView(){
 	if (importing){
 		importBox.style.top = 0;
+		importBox.style.opacity = 1;
+		importBox.style.pointerEvents = 'auto';
 	}else{
-		importBox.style.top = '-100%';
+		importBox.style.top = '-10%';
+		importBox.style.opacity = 0;
+		importBox.style.pointerEvents = 'none';
 	}
 
 	if (exporting){
 		exportBox.style.top = 0;
+		exportBox.style.opacity = 1;
+		exportBox.style.pointerEvents = 'auto';
 	}else{
-		exportBox.style.top = '-100%';
+		exportBox.style.top = '-10%';
+		exportBox.style.opacity = 0;
+		exportBox.style.pointerEvents = 'none';
 	}
 }
 
 //put temporary calendar data into global calendar variable
 function merge(cal){
-	
-	console.log(objectToPT(cal));
 	
 	//gotta check if the subobjects already exist.
 	
@@ -72,10 +78,10 @@ function autosave(){
 			var y = workingDate.getFullYear();
 			var m = workingDate.getMonth();
 			
-			console.log(value);
+			console.log(value.length);
 			
 			//only save boxes with more than nothing
-			if(value){
+			if(value.length != 0){
 				if(calendar.year[y]){
 					if(calendar.year[y].month[m]){
 						if(calendar.year[y].month[m].day[d]){
@@ -93,11 +99,8 @@ function autosave(){
 					calendar.year[y].month[m].addDay(d, value);
 				}
 				document.getElementById("f" + (d+1)).innerHTML = format(nl2br(value));
-			}else{
-				
-				//FATAL: this will remove previous indicies before saving values!!!
-				
-				//add conditions for if the month or year is empty, then remove the month or year from memory
+			}else{		
+				console.log("WORKING");
 				calendar.year[y].month[m].removeDay(d);
 				document.getElementById("f" + (d+1)).innerHTML = "";
 			}

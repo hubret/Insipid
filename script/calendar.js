@@ -7,7 +7,7 @@ function Calendar(name){
 	}
 	
 	this.removeYear = function(year){
-		this.year[year] = undefined;
+		delete this.year[year];
 	}
 }
 
@@ -19,7 +19,7 @@ function Year(){
 	}
 	
 	this.removeMonth = function(month){
-		this.month[month] = undefined;
+		delete this.month[month];
 	}
 	
 	this.removeAll = function(){
@@ -35,7 +35,7 @@ function Month(){
 	}
 	
 	this.removeDay = function(day){
-		this.day.splice(day, 1);
+		delete this.day[day];
 	}
 	
 	this.removeAll = function(){

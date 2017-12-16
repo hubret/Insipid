@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1
+- Changed motion of import/export dialogs
+- made the status bar change cursors to pointer to let you know it is clickable
+- changed title colour to the same gold used in formatting
+- Fixed bugs
+	- function that renders text appended text instead of erasing and rewriting
+	- erasing a memo would not delete it from memory (again)
+
 ## 1.1
 - Added colors to memo editors
 - Changed all offwhite #eee text to white #fff text because consistency with color codes.

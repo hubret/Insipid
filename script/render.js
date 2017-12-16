@@ -72,7 +72,7 @@ function repopulate(cal){
 
 		for(var d in workingMonth.day){
 			//fill the editor for each day, preformat. then format thru autosave()
-			document.getElementById("t" + (parseInt(d, 10)+1)).value += (workingMonth.day[d].memo);
+			document.getElementById("t" + (parseInt(d, 10)+1)).value = (workingMonth.day[d].memo);
 			console.log(parseInt(d, 10)+1);
 		}
 		
