@@ -1,4 +1,3 @@
-
 /* GLOBALS */
 *{
 	box-sizing: border-box;
@@ -47,7 +46,7 @@ a{
 #import > div, #export > div{
 	position: absolute;
 	background: #282828;
-	color: #eee;
+	color: #fff;
 	width: 25%;
 	height: 25%;
 	min-width: 400px;
@@ -63,7 +62,7 @@ a{
 	width: 100%;
 	height: 100%;
 	resize: none;
-	color: #eee;
+	color: #fff;
 	padding-top; 20px;
 	outline-color: transparent;
 }
@@ -79,7 +78,7 @@ a{
 #status{
 	position: absolute;
 	bottom: 10px;
-	color: #eee;
+	color: #fff;
 }
 
 #title{
@@ -126,14 +125,33 @@ a{
 	color: #222;
 }
 
-.day textarea{
+.day .format{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	color: #fff;
+	font-size: 9pt;
+	padding: 2px;
+}
+
+.day > textarea{
+	position: absolute;
 	border: 0;
-	background: transparent;
+	opacity: 0;
 	width: 100%;
 	height: 100%;
 	resize: none;
-	color: #eee;
+	color: #fff;
+	background: #444;
 	max-height: 200px;
 	padding-top; 20px;
-	outline-color: #fff;
+	outline-color: white;
+	font-size: 9pt;
+	z-index: 500;
+	padding: 2px;
+}
+
+.day textarea:focus{
+	opacity: 1;
 }

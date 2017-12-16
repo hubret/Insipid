@@ -34,10 +34,13 @@ function render(date){
 			//check if valid calendar cell
 			if (dn <= length && (i > 0 || j >= start)) {
 				var textarea = document.createElement('textarea');
+				var format = document.createElement('div');
 				var span = document.createElement('span');
 				var text = document.createTextNode(dn);
-				textarea.id = "d" + dn;
+				textarea.id = "t" + dn;
 				textarea.onchange = autosave;
+				format.id = "f" + dn;
+				format.className = "format";
 				
 				//check if today
 				if(dn == new Date().getDate() && workingDate.getMonth() == new Date().getMonth() && workingDate.getYear() == new Date().getYear()){
@@ -45,6 +48,7 @@ function render(date){
 				}
 
 				span.appendChild(text);
+				day.appendChild(format);
 				day.appendChild(textarea);
 				day.appendChild(span);
 				dn++;
@@ -62,17 +66,20 @@ function render(date){
 	}
 }
 
-function populate(cal){
+function repopulate(cal){
 	try{
 		var workingMonth = cal.year[workingDate.getFullYear()].month[workingDate.getMonth()];
 
 		for(var d in workingMonth.day){
-
-			document.getElementById("d" + (parseInt(d)+1)).value += (workingMonth.day[d].memo + "\n");
+			//fill the editor for each day, preformat. then format thru autosave()
+			document.getElementById("t" + (parseInt(d, 10)+1)).value += (workingMonth.day[d].memo);
+			console.log(parseInt(d, 10)+1);
 		}
+		
 	}catch(err){
 		//just shut up lol
 	}
+	autosave();
 }
 
 render(workingDate);

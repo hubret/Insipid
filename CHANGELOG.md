@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1
+- Added colors to memo editors
+- Changed all offwhite #eee text to white #fff text because consistency with color codes.
+- Fixed bugs
+	- switching working month would duplicate memos to other dates
+
 ## 1.0.2
 - Fixed a bug
 	- erasing a memo would not delete it from memory

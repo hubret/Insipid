@@ -33,29 +33,32 @@ function updateView(){
 
 //put temporary calendar data into global calendar variable
 function merge(cal){
+	
+	console.log(objectToPT(cal));
+	
 	//gotta check if the subobjects already exist.
+	
+	//logic flow improvements...
 	for(var y in cal.year){
-		for(var m in cal.year[y].month){
-			for(var d in cal.year[y].month[m].day){
-				if(calendar.year[y]){
-					if(calendar.year[y].month[m]){
+		if(calendar.year[y]){
+			for(var m in cal.year[y].month){
+				if(calendar.year[y].month[m]){
+					for(var d in cal.year[y].month[m].day){
 						if(calendar.year[y].month[m].day[d]){							
 							calendar.year[y].month[m].day[d].memo += "\n" + cal.year[y].month[m].day[d].memo;
 						}else{
 							calendar.year[y].month[m].day[d] = cal.year[y].month[m].day[d];
-							break;
 						}
-					}else{
-						calendar.year[y].month[m] = cal.year[y].month[m];
-						break;
 					}
 				}else{
-					calendar.year[y] = cal.year[y];
-					break;
+					calendar.year[y].month[m] = cal.year[y].month[m];
 				}
 			}
+		}else{
+			calendar.year[y] = cal.year[y];
 		}
 	}
+	
 	//also update the exporter
 	document.getElementById('exporter').value = objectToPT(calendar);
 }
@@ -63,16 +66,16 @@ function merge(cal){
 //autosave textarea entries to calendar variable.
 function autosave(){
 	for(var d = 0; d < cal_days_in_month[workingDate.getMonth()]; d++){
-		
-		/*if(document.getElementById("d" + (d+1)).value != ''){*/
-		
+				
 		try{
-			var value = document.getElementById("d" + (d+1)).value;
+			var value = document.getElementById("t" + (d+1)).value;
 			var y = workingDate.getFullYear();
 			var m = workingDate.getMonth();
-
+			
+			console.log(value);
+			
 			//only save boxes with more than nothing
-			if(value != ""){
+			if(value){
 				if(calendar.year[y]){
 					if(calendar.year[y].month[m]){
 						if(calendar.year[y].month[m].day[d]){
@@ -89,27 +92,71 @@ function autosave(){
 					calendar.year[y].addMonth(m);
 					calendar.year[y].month[m].addDay(d, value);
 				}
+				document.getElementById("f" + (d+1)).innerHTML = format(nl2br(value));
 			}else{
+				
+				//FATAL: this will remove previous indicies before saving values!!!
+				
+				//add conditions for if the month or year is empty, then remove the month or year from memory
 				calendar.year[y].month[m].removeDay(d);
+				document.getElementById("f" + (d+1)).innerHTML = "";
 			}
+			
 		}catch(err){
 			
 		}
-		
-		
-		/*}else{
-			calendar.year[workingDate.getFullYear()].month[workingDate.getMonth()].day.splice(d,1);
-		}*/
 	}
 	//also update the exporter
 	document.getElementById('exporter').value = objectToPT(calendar);
 }
 
 function jump(){
-	document.getElementById('loc').innerHTML = workingDate.getFullYear() + ' ' + cal_months_labels[workingDate.getMonth()];
 	workingDate = currentDate;
+	document.getElementById('loc').innerHTML = workingDate.getFullYear() + ' ' + cal_months_labels[workingDate.getMonth()];
 	render(workingDate);
-	populate(calendar);
+	repopulate(calendar);
+}
+
+function nl2br(s){
+	return s.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+}
+
+function format(s){
+	
+	var output = "";
+	
+	var colors = {
+		0: "#000", //black
+		1: "#00A", //dark blue
+		2: "#0A0", //dark green
+		3: "#0AA", //dark aqua
+		4: "#A00", //dark red
+		5: "#A0A", //dark purple
+		6: "#FA0", //gold
+		7: "#AAA", //gray
+		8: "#555", //dark gray
+		9: "#55F", //blue
+		a: "#5F5", //green
+		b: "#5FF", //aqua
+		c: "#F55", //red
+		d: "#F5F", //magenta
+		e: "#FF5", //yellow
+		f: "#FFF" //white
+	}
+			
+		var groups = s.split(/(?=&[a-fA-F0-9])/g);
+
+		for(i in groups){
+			if(groups[i].substr(0,1) == "&"){
+				var c = groups[i].substr(1,1);
+				output += ("<span style='color:" + colors[c] + "'>" + groups[i].substring(2) + "</span>");
+			}else{
+				output += groups[i].substring(0);
+			}
+			
+		}
+		
+	return output;
 }
 
 updateView();

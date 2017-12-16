@@ -1,6 +1,6 @@
 function Calendar(name){
 	this.name = name;
-	this.year = [];
+	this.year = {};
 	
 	this.addYear = function (year){
 		this.year[year] = new Year();
@@ -12,7 +12,7 @@ function Calendar(name){
 }
 
 function Year(){
-	this.month = [];
+	this.month = {};
 	
 	this.addMonth = function(month){
 		this.month[month] = new Month();
@@ -28,7 +28,7 @@ function Year(){
 }
 
 function Month(){
-	this.day = [];
+	this.day = {};
 	
 	this.addDay = function(day, memo){
 		this.day[day] = new Day(memo);
