@@ -1,5 +1,6 @@
 # Insipid
 a simple calendar that reads plaintext files
+see it [live](https://hubret.github.io/Insipid)
 
 ## Features
 - runs in browser in a local setting
